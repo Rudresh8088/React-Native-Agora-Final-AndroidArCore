@@ -4,6 +4,7 @@ package com.awesomeproject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.awesomeproject.ChannelActivity;
@@ -45,16 +46,64 @@ public class ToastModule extends ReactContextBaseJavaModule {
   }
 
 
-   @ReactMethod
-  public void navigateToExample() {
-        Activity activity = getCurrentActivity();
-        if (activity != null) {
-//            Intent intent = new Intent(activity, MainActivity2.class);
-            Intent intent = new Intent(activity, ChannelActivity.class);
 
-            activity.startActivity(intent);
+//    @ReactMethod
+//    public void myMethod(String name, String location) {
+//        Log.d("CalendarModule", "Create event called with name: " + name   + " and location: " + location);
+//    }
+
+
+//   @ReactMethod
+//  public void navigateToExample(String channelName, String hostName) {
+//       Log.d("NativeModuleData", "ChannelName: " + channelName   + " and hostName: " + hostName);
+//
+//       Activity activity = getCurrentActivity();
+//        if (activity != null) {
+    //            Intent intent = new Intent(activity, ChannelActivity.class);
+
+//            Intent intent = new Intent(activity, AgoraARStreamerActivity.class);
+//            activity.startActivity(intent);
+//
+//            if (channelName != null && hostName != null){
+//             if (hostName == "Host") {
+//
+//             } else if (hostName == "Audience") {
+//
+//             }
+//
+//            }
+//        }
+//    }
+
+
+
+    @ReactMethod
+    public void navigateToExample(String channelName, String person) {
+        Activity activity = getCurrentActivity();
+        Log.d("hander",activity.toString());
+        Log.d("hander",person.toString());
+        Log.d("hander",person.toString());
+        if (activity != null) {
+            if(person.equals("consumer")){
+                Log.d("hander1",channelName.toString());
+                Intent intent2 = new Intent(activity, AgoraARStreamerActivity.class);
+                intent2.putExtra("ChannelName", channelName);
+                activity.startActivity(intent2);
+
+            }
+            if(person.equals("host")){
+                Intent intent = new Intent(activity, AgoraARAudienceActivity.class);
+                intent.putExtra("ChannelName", channelName);
+                activity.startActivity(intent);
+            }
+            //  Intent intent = new Intent(activity, MainActivity2.class);
+            // Intent intent = new Intent(activity, ChannelActivity.class);
+
+            // activity.startActivity(intent);
         }
     }
+
+
 
 
 }

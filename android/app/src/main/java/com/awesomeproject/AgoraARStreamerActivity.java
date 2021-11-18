@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -174,6 +175,7 @@ public class AgoraARStreamerActivity extends AppCompatActivity implements GLSurf
             Manifest.permission.CAMERA
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -228,6 +230,7 @@ public class AgoraARStreamerActivity extends AppCompatActivity implements GLSurf
         checkAndInitRtc();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onResume() {
         super.onResume();
@@ -294,6 +297,7 @@ public class AgoraARStreamerActivity extends AppCompatActivity implements GLSurf
         mDisplayRotationHelper.onResume();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onPause() {
         super.onPause();
